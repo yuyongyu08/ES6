@@ -1,0 +1,16 @@
+{
+  "name": "es6-demo-codes",
+  "version": "1.0.0",
+  "description": "es6 features",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "node_modules/.bin/eslint *.js"
+  },
+  "keywords": [
+    "es6"
+  ],
+  "author": "yuyy",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {}
+}
