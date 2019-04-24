@@ -25,7 +25,7 @@ let closeDoor = function (timeout) {
     })
 };
 
-//等到它们都执行完后才会进到then里面，"谁跑的慢，以谁为准执行回调"
+//"谁跑的慢，以谁为准执行回调"，results数组包含所有的返回结果
 // Promise.all([openDoor(3000), putElephant(2000), closeDoor(1000)]).then(function (results) {
 //     console.log('results:', results);
 // });
