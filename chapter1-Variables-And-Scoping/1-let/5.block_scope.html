@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let块状作用域</title>
+</head>
+<body>
+<ul>
+    <li>let声明的全局变量存在于不可见的块状作用域，通过window访问不到</li>
+    <li>var声明的全局变量存在于全局，可以通过window访问</li>
+</ul>
+<script>
+    let l = 'let声明的全局变量存在于不可见的块状作用域';
+
+    var v = 'var声明的全局变量存在于全局';
+
+    console.log('let 全局变量：', window.l); //undefined
+
+    console.log('var 全局变量：', window.v); //var声明的全局变量存在于全局
+</script>
+</body>
+</html>

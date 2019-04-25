@@ -1,5 +1,13 @@
-console.log(foo); //undefined ,变量foo用var命令声明，会发生变量提升，即脚本开始运行时，变量foo已经存在了，但是没有值，所以会输出undefined
-var foo = 'hello var!';
+/*
+* 用var命令声明变量，会发生变量提升，提升只是指【声明部分】，【赋值部分】并不会提升
+* */
+console.log(foo);//undefined
+foo = 'hello var!';
+console.log(foo); //hello var!
+var foo = 'var';
 
+/*
+* 用let声明的变量不会发生变量提升
+* */
 console.log(bar);
 let bar = 'hello let!'; //ReferenceError
