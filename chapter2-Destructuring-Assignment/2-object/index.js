@@ -3,10 +3,10 @@ console.log(foo);
 console.log(bar);
 
 /*
-* 数组的元素是按次序排列的，变量的取值由它的位置决定；而对象的属性没有次序，*变量必须与属性同名*，才能取到正确的值。
+* 数组的元素是按次序排列的，变量的取值由它的位置决定；而对象的属性没有次序，【变量必须与属性同名】，才能取到正确的值。
 **/
 
-let {baz} = {foo: 'aaa', bar: 'bbb'};;
+let {baz} = {foo: 'aaa', bar: 'bbb'};
 console.log(baz); //undefined
 
 /*
@@ -16,6 +16,8 @@ console.log(baz); //undefined
 let {firstName: firstName, secondName: secondName} = {firstName: 'yu', secondName: 'yongyu'};
 console.log(firstName);
 console.log(secondName);
+
+
 
 /*
 * 对象解构也适用于嵌套结构

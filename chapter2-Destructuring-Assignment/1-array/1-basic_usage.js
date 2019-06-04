@@ -9,7 +9,7 @@ console.log(c); //3
 
 
 /*
-* 只要等号两边的模式相同，左边的变量就会被赋予对应的值
+* 完全解构（模式匹配）：只要等号两边的模式相同，左边的变量就会被赋予对应的值
 **/
 
 let [foo, [[bar], baz]] = [1, [[2], 3]];
@@ -32,4 +32,38 @@ console.log(tail); //[2,3,4]
 let [you, he, ...me] = ['a'];
 console.log(you); //a
 console.log(he); //undefined 解构不成功，变量的值就等于undefined。
-console.log(me); //[]  为什么？
+console.log(me); //[]  为什么？扩展运算符（...）操作空数组（[]）没有返回任何东西
+
+/*
+* 不完全解构：只有部分模式匹配，匹配不到的变量值等于undefined
+* */
+
+let [A, [B, C], D] = [1, [2], 3];
+
+console.log(B); //2
+console.log(C); //undefined
+console.log(D); //3
+
+
+/*
+* 解构失败原因：
+* 1.等号右边的值转化为对象后不具备Iterator接口
+* 2.等号右边的值本身就不具备Iterator接口
+*
+* */
+
+let [foo1] = 1;
+let [foo2] = false;
+let [foo3] = NaN;
+let [foo4] = undefined;
+let [foo5] = null;
+let [foo6] = {};
+
+
+/*
+*  任何具有Iterator接口的数据解构，都可以采用数组形式的解构赋值。
+* */
+
+
+
+
