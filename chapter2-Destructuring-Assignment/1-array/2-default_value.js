@@ -1,3 +1,4 @@
+
 /*
 * 解构赋值允许指定默认值
 * */
@@ -8,7 +9,7 @@ console.log(y); //2
 
 
 /*
-* ES6 内部使用严格相等运算符（===），判断一个位置是否有值。所以，只有当一个数组成员严格等于undefined，默认值才会生效。
+* 数组成员严格等于undefined，默认值才会生效。（为什么？ES6内部使用严格相等运算符===判断一个位置是否有值）
 *
 * */
 let [a = 1] = [undefined];
@@ -28,6 +29,10 @@ console.log(c); //3
 console.log(d); //c
 
 
+/**
+ * 默认值可以引用解构赋值的其他变量，但该变量必须已经声明。
+ * */
+
 let [e = 4, f = e] = [5, 6];
 console.log(e); //5
 console.log(f); //6
@@ -36,4 +41,6 @@ let [g = h, h= 7] = [7, 8];
 console.log(g); //7
 console.log(h); //8
 
-let [k = j, j= 9] = []; //ReferenceError: h is not defined
+let [k = j, j= 9] = []; //ReferenceError: j is not defined
+
+//k用j做默认值，j还没有声明，但是上面的g为什么不报错？

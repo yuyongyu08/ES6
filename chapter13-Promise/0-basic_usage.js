@@ -31,21 +31,18 @@
 
 
 //如果是回调很简单（只有一层），通过callback也可以模拟
-
 function asyncFn_1(cb) {
     setTimeout(function () {
-        console.log('done');
-
-        cb('well! I am here!');
-    })
+        console.log('sync done');
+        cb();
+    }, 500)
 }
 
-// function callback(msg) {
-//     console.log('callback');
-//     console.log(msg);
-// }
-//
-// asyncFn_1(callback);
+function callback(msg) {
+    console.log('callback');
+}
+
+asyncFn_1(callback);
 
 
 //但如果callback也需要回调函数呢？再定一个callback传递进去吗?
@@ -60,10 +57,6 @@ function callback_2(msg) {
 }
 
 
-//如何把callback_2传给callback_1？
-asyncFn_1(callback_1(callback_2)); //TypeError
+//如何把callback_2传给callback_1？用bind！！！
+asyncFn_1(callback_1.bind(null, callback_2.bind(null, 'cb1 called cb2')));
 
-asyncFn_1(function () {
-    console.log('callback_1');
-    cb();
-});

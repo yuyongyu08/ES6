@@ -1,3 +1,4 @@
+
 /* const声明的是一个只读的常量，一旦声明不允许更改 */
 const PI = 3.14159;
 console.log(PI);

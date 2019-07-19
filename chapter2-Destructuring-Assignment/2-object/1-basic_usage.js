@@ -10,12 +10,11 @@ let {baz} = {foo: 'aaa', bar: 'bbb'};
 console.log(baz); //undefined
 
 /*
-* 对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变量
+* 对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变量，真正被赋值的是变量
 **/
-
-let {firstName: firstName, secondName: secondName} = {firstName: 'yu', secondName: 'yongyu'};
-console.log(firstName);
-console.log(secondName);
+let {firstName: firstName1, secondName: secondName1} = {firstNameA: 'yu', secondName: {value: 'yongyu'}};
+console.log('firstName1:', firstName1);
+console.log('secondName1:', secondName1);
 
 
 
