@@ -5,12 +5,16 @@
 
 let name = 'default export';
 export default name;
+// export default {name}; //直接默认导出一个对象
 
-
+//1、一个模块只能有一个默认输出
 // let myName = 'yyy';
 // export default myName; //Error: Only one default export allowed per module
 
-//具名导出会和默认导出独立存在，使用时用各自的方式导入即可
+//2、export default后面不能跟声明语句
+// export default let sth = 'abc'; //SyntaxError: Only expressions, functions or classes are allowed as the `default` export
+
+//3、具名导出会和默认导出独立存在，使用时用各自的方式导入即可
 export function say(n) {
     console.log(`this is ${n}`);
 }

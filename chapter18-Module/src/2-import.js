@@ -10,9 +10,10 @@ all.sayAge();
 /*
 * 方式2：{}方式，选择性导入，【{}中的变量名要与导出的名称相同】；export default导出，import则不能用{}
 **/
-import {name, sayName, Student} from './1-export'
+import {name, job, sayName, Student} from './1-export'
 
 console.log(name);
+console.log(job);
 
 sayName();
 
@@ -21,11 +22,11 @@ student.sayName();
 student.saySchool();
 
 
-//as :为变量重新赋值
+//1、as :为变量重新赋值
 import {name as myName} from './1-export';
 console.log(myName);
 
-//import具有提升效果
+//2、import具有提升效果
 sayMyName();
 import {sayName as sayMyName} from './1-export'
 
