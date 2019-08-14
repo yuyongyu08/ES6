@@ -4,7 +4,8 @@
   "description": "es6 features",
   "main": "index.js",
   "scripts": {
-    "eslint": "node_modules/.bin/eslint *.js"
+    "babel": "rm -rf ./dist && npx babel chapter18-Module/src/ --out-dir chapter18-Module/dist/ --presets=@babel/preset-env -w",
+    "build": "npx webpack"
   },
   "keywords": [
     "es6"
@@ -12,5 +13,12 @@
   "author": "yuyy",
   "license": "ISC",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6"
+  }
 }
