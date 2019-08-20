@@ -1,3 +1,6 @@
+/*
+* ES5时代，【构造函数】
+*/
 function PointFunction(x, y) {
     this.x = x;
     this.y = y;
@@ -10,7 +13,9 @@ PointFunction.prototype.toString = function(){
 let p1 = new PointFunction(10, 20);
 console.log(p1.toString()); //(10,20)
 
-
+/*
+* ES6时代，【类】
+*/
 class PointClass{
     constructor(x, y){
         this.x = x;
@@ -62,8 +67,7 @@ console.log(p3.toString()); //(10,20)
 /*
 * 3、在类的实例上面调用方法，其实就是调用原型上的方法
 **/
-
-console.log(p3.toString() === PointClass1.prototype.toString()); //false TODO ???
+console.log(p3.toString === PointClass1.prototype.toString); //true
 
 
 /*

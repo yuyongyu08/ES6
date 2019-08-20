@@ -4,6 +4,7 @@
 **/
 
 function Point(name) {
+    console.log(new.target);
     if(new.target === Point){
         this.name = name;
     }else{
@@ -11,7 +12,13 @@ function Point(name) {
     }
 }
 
-// let p = Point('yuyy'); //Error: 必须用 new 生成实例
+let p = Point('yuyy'); //undefined Error: 必须用 new 生成实例
+
+//应用：限制【构造函数】必须用 new 生成实例
+
+
+
+
 
 
 /*
@@ -28,8 +35,6 @@ class Rectangle {
 
 let r = new Rectangle(10, 15); //true
 
-
-
 //子类继承父类时，new.target会返回子类
 
 class Square  extends Rectangle{
@@ -39,7 +44,6 @@ class Square  extends Rectangle{
 }
 
 let s = new Square(2, 2); //false
-
 
 
 //应用：可以写出不能独立使用、必须继承后才能使用的类

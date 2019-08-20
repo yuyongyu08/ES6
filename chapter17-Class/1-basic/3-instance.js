@@ -1,6 +1,6 @@
 
 class Point{
-    distance = 0; //【实例属性】除了定义在constructor()方法里面的this上面，也可以定义在类的最顶层
+    // distance = 0; //【实例属性】除了定义在constructor()方法里面的this上面，也可以定义在类的最顶层，（TODO 报错！ES7？）
 
     constructor(x, y){
         this.x = x;
@@ -10,13 +10,17 @@ class Point{
     toString(){
         return `(${this.x},${this.y})`
     }
+
+    static print(){
+        console.log('print:', this.x, this.y);
+    }
 }
 
 Point.z = 0;
 
 
 /*
-* 1、【实例属性】除非显式定义在其本身（即定义在this对象上），否则都是定义在原型上（即定义在class上）
+* 1、【实例属性】即定义在this对象上
 **/
 let p1 = new Point(10,20);
 
@@ -26,12 +30,40 @@ console.log(p1.x === Point.prototype.x); //false
 console.log(p1.toString === Object.getPrototypeOf(p1).toString); //true
 console.log(p1.toString === Point.prototype.toString); //true
 
-console.log(p1.hasOwnProperty('x')); //true
-console.log(p1.hasOwnProperty('y')); //true
-console.log(p1.hasOwnProperty('toString')); //false
+console.log('实例属性：');
+console.log('x在实例上？', p1.hasOwnProperty('x')); //true
+console.log('x在Point上？', Point.hasOwnProperty('x')); //false
+console.log('x在Point.prototype？', Point.prototype.hasOwnProperty('x')); //false
 
-console.log(p1.hasOwnProperty('z')); //false
-console.log(Point.hasOwnProperty('z')); //true
+console.log('类属性：');
+console.log('z在实例上？', p1.hasOwnProperty('z')); //false
+console.log('z在Point上？', Point.hasOwnProperty('z')); //true
+console.log('z在Point.prototype？', Point.prototype.hasOwnProperty('z')); //false
+
+console.log('原型属性');
+console.log('toString在实例上？',p1.hasOwnProperty('toString')); //false
+console.log('toString在Point上？', Point.hasOwnProperty('toString')); //false
+console.log('toString在Point.prototype？', Point.prototype.hasOwnProperty('toString')); //true
+console.log();
+console.log('print在实例上？',p1.hasOwnProperty('print')); //false
+console.log('print在Point上？', Point.hasOwnProperty('print')); //true
+console.log('print在Point.prototype？', Point.prototype.hasOwnProperty('print')); //false
+
+
+/*
+* 总结：
+* 一个类中可能有3种属性：
+* 1.实例属性：定义在this上（例如x、y）
+* 2.原型属性：定义在类的原型对象上（例如toString、print）
+* 3.类属性：定义在类本身上（例如z），很少使用！
+*
+* 由此也可推出new一个对象时做的最重要的两件事：
+* 1.把this指向实例
+* 2.把类的原型对象指向实例的原型指针
+*
+*/
+
+
 
 /*
 * 2、类的所有实例共享一个原型对象

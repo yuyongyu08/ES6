@@ -16,5 +16,11 @@
 **/
 
 //写法1：Class.propName
+class Point {
+}
+Point.z = 0;
 
 //写法2：（提案阶段）
+class Person {
+    static name
+}
