@@ -41,7 +41,7 @@ class C extends A{
 //super指向父类的原型对象，所以定义在父类实例上的方法或属性，是无法通过super调用的
 
 //在子类【普通方法】中通过super调用父类的方法时，方法内部的【this】指向当前的【子类实例】；
-//在子类的【静态方法】中通过super调用父类的方法时，方法内部的【this】指向当前的【子类】，而不是子类的实例。
+//在子类【静态方法】中通过super调用父类的方法时，方法内部的【this】指向当前的【子类】，而不是子类的实例。
 
 
 class Person {
@@ -52,18 +52,33 @@ class Person {
     syaName(){
         console.log(this.name);
     }
+    
+    static syaName(){
+        console.log('Person.name');
+    }
 }
 
 class Student extends Person{
     constructor(name, school) {
         super(name);
-
+        this.school = school;
     }
 
     sayHello(){
+        super.syaName();
+        console.log(`in ${this.school}`);
+    }
 
+    static sayHello(){
+        super.syaName();
+        console.log(`in ${this.school}`);
     }
 }
+
+Student.sayHello();
+
+let s = new Student('yuyy', 'YanShan');
+s.sayHello();
 
 
 
