@@ -4,7 +4,7 @@
   "description": "es6 features",
   "main": "index.js",
   "scripts": {
-    "babel": "npx babel -w chapter18-Module/src/ --out-dir chapter18-Module/dist/ --presets=@babel/preset-env ",
+    "babel": "npx babel -w 18-Module/src/ --out-dir 18-Module/dist/ --presets=@babel/preset-env ",
     "build": "npx webpack"
   },
   "keywords": [
