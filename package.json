@@ -4,7 +4,8 @@
   "description": "es6 features",
   "main": "index.js",
   "scripts": {
-    "babel": "npx babel -w 18-Module/src/ --out-dir 18-Module/dist/ --presets=@babel/preset-env ",
+    "babel14": "npx babel -w 14-Iterator/src --out-dir 14-Iterator/dist --presets=@babel/preset-env ",
+    "babel18": "npx babel -w 18-Module/src/ --out-dir 18-Module/dist/ --presets=@babel/preset-env ",
     "build": "npx webpack"
   },
   "keywords": [
@@ -12,10 +13,17 @@
   ],
   "author": "yuyy",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "es5-shim": "^4.5.12"
+  },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5"
+    "@babel/core": "^7.1.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.1.5",
+    "babel-loader": "^8.0.4",
+    "es3ify-loader": "^0.2.0",
+    "es3ify-webpack-plugin": "^0.1.0",
+    "webpack": "^1.12.9"
   }
 }
