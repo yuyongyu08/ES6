@@ -26,3 +26,12 @@ function getLikeArray() {
 }
 let s3 = new Set(getLikeArray(1, 2, 3, 3, 4, 4, 5));
 console.log(s3); //Set { 1, 2, 3, 4, 5 }
+
+
+/*
+* Set类似于数组，区别在于成员不允许重复，利用此特点可以很方便的实现去重、交并补集合
+*/
+
+
+
+

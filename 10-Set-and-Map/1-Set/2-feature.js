@@ -6,8 +6,8 @@
 //数组
 let arr = [1, 2, 3, 3, 4, 4, 5];
 
-let newArr = [...new Set(arr)];
-let newArr1 = Array.from(new Set(arr));
+let newArr = [...new Set(arr)]; //方式1
+let newArr1 = Array.from(new Set(arr));//方式2
 
 console.log(newArr); //[ 1, 2, 3, 4, 5 ]
 console.log(newArr1); //[ 1, 2, 3, 4, 5 ]
