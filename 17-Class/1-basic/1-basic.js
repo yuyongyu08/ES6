@@ -44,7 +44,7 @@ console.log(PointClass === PointClass.prototype.constructor); //true
 
 
 /*
-* 2、【类】也有prototype属性，【类】上的所有方法都定义在prototype属性上
+* 2、【类】也有prototype属性，【类】上的所有【方法】都定义在prototype属性上
 **/
 
 class PointClass1{

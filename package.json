@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "babel14": "npx babel -w 14-Iterator/src --out-dir 14-Iterator/dist --presets=@babel/preset-env ",
-    "babel18": "npx babel -w 18-Module/src/ --out-dir 18-Module/dist/ --presets=@babel/preset-env ",
+    "babel18": "npx babel -w 18-Module/1-syntax/src/ --out-dir 18-Module/1-syntax/dist/ --presets=@babel/preset-env ",
     "build": "npx webpack"
   },
   "keywords": [
