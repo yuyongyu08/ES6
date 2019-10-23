@@ -9,7 +9,7 @@ class MyPromise{
             fulfilled: 'FULFILLED',
             rejected: 'REJECTED',
         };
-        
+
         this._status = this._statusSet.pending;
 
         this._value = undefined;
@@ -19,7 +19,6 @@ class MyPromise{
         } catch (err){
             this._reject(err);
         }
-
     }
 
     _resolve (val){
@@ -33,11 +32,19 @@ class MyPromise{
         this._status = this._statusSet.rejected;
         this._value = err;
     }
+
+    then(onFulfiled, onRejected){
+        switch (this._status){
+            case this._statusSet.fulfilled :
+                onFulfiled(this._value);
+                break;
+            case this._statusSet.rejected:
+                onRejected(this._value);
+                break;
+            default:
+                console.log('none');
+        }
+    }
 }
 
-let p = new MyPromise(function (resolve, reject) {
-   setTimeout(function () {
-       console.log('call');
-       resolve('fine')
-   }, 1000)
-});
+module.exports = MyPromise;
