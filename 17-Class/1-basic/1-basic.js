@@ -44,10 +44,12 @@ console.log(PointClass === PointClass.prototype.constructor); //true
 
 
 /*
-* 2、【类】也有prototype属性，【类】上的所有【方法】都定义在prototype属性上
+* 2、【类】也有prototype属性，【类】上的所有【方法】都定义在prototype属性；属性除非显式定义在this对象上，都定义在原型上
 **/
 
 class PointClass1{
+    z = 0;
+
     constructor (x, y) {
         this.x = x;
         this.y = y;
@@ -57,6 +59,8 @@ class PointClass1{
 PointClass1.prototype.toString = function () {
     return `(${this.x},${this.y})`
 };
+
+console.log(PointClass1.prototype);
 
 let p3 = new PointClass1(10, 20);
 
