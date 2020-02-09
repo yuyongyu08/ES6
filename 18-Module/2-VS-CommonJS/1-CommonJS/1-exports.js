@@ -1,9 +1,9 @@
 let counter = 0;
-function increase(){
+function increase() {
     counter++
 }
 
-function getCounter(){
+function getCounter() {
     return counter
 }
 

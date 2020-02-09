@@ -13,6 +13,7 @@ all.sayAge();
 * 方式2：{}方式，选择性导入，【{}中的变量名要与导出的名称相同】；export default导出，import则不能用{}
 **/
 
+console.log(all.age);
 console.log(all.name);
 console.log(all.job);
 (0, all.sayName)();

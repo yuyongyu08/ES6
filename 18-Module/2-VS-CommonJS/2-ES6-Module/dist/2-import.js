@@ -2,8 +2,8 @@
 
 var _export = require("./1-export");
 
-console.log(_export.counter); //0
+console.log('before: ', _export.counter); //0
 
 (0, _export.increase)();
-console.log(_export.counter); //1
+console.log('after: ', _export.counter); //1
 //ES6 Module是动态加载，动态引用

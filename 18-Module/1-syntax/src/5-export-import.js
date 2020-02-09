@@ -5,7 +5,7 @@
 //具体输出
 export { age, name, job, sayAge, sayName, Student, Person} from './1-export'
 
-export name from './3-export_default'
+// export name from './3-export_default'  //暂不支持
 export { say } from './3-export_default'
 
 //整体输出

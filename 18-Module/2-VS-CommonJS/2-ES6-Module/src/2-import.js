@@ -1,9 +1,9 @@
 import { counter, increase } from './1-export'
 
-console.log(counter); //0
+console.log('before: ', counter); //0
 
 increase();
 
-console.log(counter); //1
+console.log('after: ', counter); //1
 
 //ES6 Module是动态加载，动态引用

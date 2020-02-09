@@ -7,7 +7,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 /*
 * export default的导入
 */
-all.say(all["default"].name); //export default命令其实只是输出一个叫做default的变量
+all.say(all["default"]); //export default命令其实只是输出一个叫做default的变量
 
 all.say(all["default"]);
 /*
@@ -19,7 +19,7 @@ all.say(all["default"]);
 
 all.say('yuyongyu');
 /*
-* export default和export在一个模块中共存时，两者的导出并没有合并在一起
+* export default和export在一个模块中共存时，两者的导出并【没有】合并在一起
 */
 
 console.log(all.name); //undefined

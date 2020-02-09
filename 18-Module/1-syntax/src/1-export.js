@@ -15,12 +15,12 @@ export let age = 18;
 //方式2：（推荐）
 let name = 'yuyy';
 // export name; //SyntaxError，原因：export命令规定的是对外的接口
-export {name};
+export { name };
 
 
 //方式3：
 let j = 'developer';
-export {j as job}
+export { j as job }
 
 
 /*
@@ -36,38 +36,38 @@ export function sayAge() {
 function sayName() {
     console.log('I am yuyy!');
 }
-export {sayName}
+export { sayName }
 
 /*
 * 类
 **/
 
 //方式1：
-export class Student extends Person{
-    constructor(name, school){
+export class Student extends Person {
+    constructor(name, school) {
         super(name);
         this.school = school
     }
 
-    saySchool(){
+    saySchool() {
         console.log(`my school is ${this.school}`);
     }
 }
 
 //方式2：（推荐）
-class Person{
-    constructor(name){
+class Person {
+    constructor(name) {
         this.name = name;
     }
 
-    sayName(){
+    sayName() {
         console.log(`I am ${this.name}`);
     }
 }
-export {Person}
+export { Person }
 
 /*
-* 一个模块多个export语句，会将导出内容合并到一个对象上
+* 一个模块多个export语句，会将导出内容【合并】到一个对象上
 */
 
 
