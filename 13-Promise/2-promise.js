@@ -32,7 +32,7 @@ let closeDoor = function (msg) {
 
 //把原来的回调写法分离出来，在异步操作执行完后，用链式调用的方式执行回调函数。
 
-// openDoor().then(putElephant).then(closeDoor);
+openDoor().then(putElephant).then(closeDoor);
 
 // openDoor().then(function (msg) {
 //     return putElephant(msg);
@@ -42,9 +42,9 @@ let closeDoor = function (msg) {
 
 
 //在then方法中，你也可以直接return数据而不是Promise对象，在后面的then中就可以接收到数据了
-openDoor().then(function (msg) {
-    console.log(msg);
-    return 'put elephant in'
-}).then(function (msg) {
-    console.log(msg);
-});
+// openDoor().then(function (msg) {
+//     console.log(msg);
+//     return 'put elephant in'
+// }).then(function (msg) {
+//     console.log(msg);
+// });

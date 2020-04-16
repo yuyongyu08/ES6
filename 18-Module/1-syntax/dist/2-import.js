@@ -16,10 +16,17 @@ all.sayAge();
 console.log(all.age);
 console.log(all.name);
 console.log(all.job);
-(0, all.sayName)();
-var student = new all.Student('yyy', 'Yanshan');
-student.sayName();
-student.saySchool(); //1、as :为变量重新赋值
+console.log(all.person);
+console.log(all.student); //【import命令输入的变量都是只读的，因为它的本质是输入接口。也就是说，不允许在加载模块的脚本里面，改写接口。】
+// age = 19;
+//【如果import的是一个对象，改写对象的属性是允许的。】
+// person = {name: 'yuyy'};
+
+all.person.name = 'yyy';
+(0, all.sayName)(); // let s = new Student('yyy', 'Yanshan');
+// s.sayName();
+// s.saySchool();
+//1、as :为变量重新赋值
 
 console.log(all.name); //2、import具有提升效果
 

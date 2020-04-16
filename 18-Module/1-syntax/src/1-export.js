@@ -6,21 +6,32 @@
 
 
 /*
-* 变量
+* 变量：基本类型、引用类型
 **/
 
-//方式1：
+//基本类型-方式1：
 export let age = 18;
 
-//方式2：（推荐）
+//基本类型-方式2：（推荐）
 let name = 'yuyy';
 // export name; //SyntaxError，原因：export命令规定的是对外的接口
 export { name };
 
 
-//方式3：
+//基本类型-方式3：
 let j = 'developer';
 export { j as job }
+
+
+//引用类型-方式1：
+export let person = { name: '' }
+
+//引用类型-方式2：
+let student = {score: ''}
+export {
+    student
+}
+
 
 
 /*
@@ -43,16 +54,16 @@ export { sayName }
 **/
 
 //方式1：
-export class Student extends Person {
-    constructor(name, school) {
-        super(name);
-        this.school = school
-    }
+// export class Student extends Person {
+//     constructor(name, school) {
+//         super(name);
+//         this.school = school
+//     }
 
-    saySchool() {
-        console.log(`my school is ${this.school}`);
-    }
-}
+//     saySchool() {
+//         console.log(`my school is ${this.school}`);
+//     }
+// }
 
 //方式2：（推荐）
 class Person {
