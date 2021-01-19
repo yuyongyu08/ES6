@@ -1,33 +1,54 @@
 let MyPromise = require('./1-basic');
-console.log(MyPromise);
-let p = new MyPromise(function (resolve, reject) {
-    console.log('cb call');
 
-    if(Math.random() > 0.5){
-        resolve('resolve')
-    }else{
-        reject('reject')
+//处理【同步】任务
+let p = new MyPromise(function (resolve, reject) {
+    try {
+        if (Math.random() > 0.5) {
+            resolve('success!')
+        } else {
+            reject('fail!')
+        }
+    } catch (error) {
+        reject(error)
     }
 });
 
-p.then((msg)=>{
-    console.log('resolve:', msg);
+// p.then((msg) => {
+//     console.log(msg);
+// }, (msg) => {
+//     console.log(msg);
+// }).then((msg) => {
+//     console.log('第二个resolve', msg);
+// }, (msg) => {
+//     console.log('第二个reject', msg);
+// });
+
+//处理【异步】任务
+let p1 = new MyPromise(function (resolve, reject) {
+    try {
+        setTimeout(() => {
+            if (Math.random() > 0.5) {
+                resolve('success!')
+            } else {
+                reject('fail!')
+            }
+        }, 1000)
+    } catch (error) {
+        reject(error)
+    }
+});
+
+p1.then((msg) => {
+    console.log(msg);
 }, (msg) => {
-    console.log('reject:', msg);
-});
-
-
-let MyFinalPromise = require('./2-final');
-console.log(MyPromise);
-let myFinalPromise = new MyFinalPromise(function (resolve, reject) {
-    setTimeout(function () {
-        console.log('call');
-        resolve('fine')
-    }, 1000)
-});
-
-myFinalPromise.then((msg)=>{
-    console.log('resolve:', msg);
+    console.log(msg);
+}).then((msg) => {
+    console.log('第2个resolve', msg);
 }, (msg) => {
-    console.log('reject:', msg);
+    console.log('第2个reject', msg);
+}).then((msg) => {
+    console.log('第3个resolve', msg);
+}, (msg) => {
+    console.log('第3个reject', msg);
 });
+
