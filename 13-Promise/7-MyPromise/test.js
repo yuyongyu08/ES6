@@ -43,12 +43,28 @@ p1.then((msg) => {
 }, (msg) => {
     console.log(msg);
 }).then((msg) => {
-    console.log('第2个resolve', msg);
+    console.log('第2个resolve：', msg);
 }, (msg) => {
-    console.log('第2个reject', msg);
+    console.log('第2个reject：', msg);
 }).then((msg) => {
-    console.log('第3个resolve', msg);
+    console.log('第3个resolve：', msg);
 }, (msg) => {
-    console.log('第3个reject', msg);
-});
+    console.log('第3个reject：', msg);
+}).catch(err => {
+    console.log('catch：', err);
+})
 
+let asyncTasks = [
+    (done) => setTimeout(() => { done(1) }, 1000),
+    (done) => setTimeout(() => { done(2) }, 3000),
+    (done) => setTimeout(() => { done(3) }, 2000)
+];
+asyncTasks = asyncTasks.map(item => new MyPromise(resolve => item(resolve)))
+
+MyPromise.all(asyncTasks).then(res => {
+    console.log(res);
+})
+
+MyPromise.race(asyncTasks).then(res => {
+    console.log(res);
+})

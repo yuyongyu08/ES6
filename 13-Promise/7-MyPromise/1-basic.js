@@ -42,6 +42,7 @@ class MyPromise {
 
     then(onFulfiled, onRejected) {
         return new MyPromise((resolve, reject) => {
+            //为啥要包装一层？
             const resolveFn = value => {
                 try {
                     const x = onFulfiled(value);
@@ -72,6 +73,50 @@ class MyPromise {
                     this._onRejectedCallbacks.push(rejectFn)
                     break;
             }
+        })
+    }
+
+    catch(onRejected) {
+        return this.then(undefined, onRejected)
+    }
+
+    //todo 没看懂
+    finallly(callback) {
+        return this.then(value => MyPromise.resolve(callback()).then(() => value), error => {
+            MyPromise.resolve(callback()).then(() => error)
+        })
+    }
+
+    static resolve(value) {
+        return value instanceof MyPromise ? value : new MyPromise(resolve => resolve(value))
+    }
+
+    static reject(err) {
+        return new MyPromise((resolve, reject) => reject(err))
+    }
+
+    static all(promiseArray) {
+        return new MyPromise((resolve, reject) => {
+            let result = [], count = 0;
+            promiseArray.forEach((promise, index) => {
+                promise.then(value => {
+                    result[index] = value;
+                    count++;
+                    if (count === promiseArray.length) {
+                        resolve(result)
+                    }
+                }, err => {
+                    reject(err)
+                })
+            })
+        })
+    }
+
+    static race(promiseArray) {
+        return new MyPromise((resolve, reject) => {
+            promiseArray.forEach(promise => {
+                promise.then(res => resolve(res), err => reject(er))
+            })
         })
     }
 }
