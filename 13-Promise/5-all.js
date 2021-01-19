@@ -26,9 +26,9 @@ let closeDoor = function (timeout) {
 };
 
 //"谁跑的慢，以谁为准执行回调"，results数组包含所有的返回结果
-// Promise.all([openDoor(3000), putElephant(2000), closeDoor(1000)]).then(function (results) {
-//     console.log('results:', results);
-// });
+Promise.all([openDoor(3000), putElephant(2000), closeDoor(1000)]).then(function (results) {
+    console.log('all results:', results);
+});
 
 
 Promise.all([
@@ -40,3 +40,14 @@ Promise.all([
 ]).then(function (results) {
     console.log('results:', results);
 });
+
+//有一个变为rejected，整个Promise都变为rejected（“一损俱损”）
+Promise.all([
+    Promise.resolve('hello!'),
+    Promise.reject('error!'),
+    Promise.resolve('hi!'),
+]).then(results => {
+    console.log(results);
+}).catch(err => {
+    console.log('catch:', err);
+})

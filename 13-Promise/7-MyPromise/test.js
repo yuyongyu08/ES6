@@ -52,6 +52,8 @@ p1.then((msg) => {
     console.log('第3个reject：', msg);
 }).catch(err => {
     console.log('catch：', err);
+}).finallly(() => {
+    console.log('finallly');
 })
 
 let asyncTasks = [
