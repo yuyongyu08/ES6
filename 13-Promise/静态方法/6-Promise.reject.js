@@ -1,4 +1,7 @@
-Promise.reject("fulfiled")
+/**
+ * 有onReject，执行onReject
+ */
+Promise.reject("rejected")
   .then(
     (value) => {
       console.log("onResolve: ", value);
@@ -11,7 +14,10 @@ Promise.reject("fulfiled")
     console.log("catch: ", err);
   });
 
-Promise.reject("fulfiled")
+/**
+ * 没有onReject，则执行 onReject
+ */
+Promise.reject("rejected")
   .then((value) => {
     console.log("onResolve: ", value);
   })

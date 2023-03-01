@@ -1,47 +1,110 @@
-let openDoor = function (timeout) {
-  return new Promise(function (resolve, reject) {
-    setTimeout(function () {
-      console.log("step 1:open the door");
-      resolve("door opened");
-    }, timeout);
-  });
-};
-
-let putElephant = function (timeout) {
-  return new Promise(function (resolve, reject) {
-    setTimeout(function () {
-      console.log("step 2: put in elephant");
-      resolve("elephant putted in");
-    }, timeout);
-  });
-};
-
-let closeDoor = function (timeout) {
-  return new Promise(function (resolve, reject) {
-    setTimeout(function () {
-      console.log("step 3 : close the door");
-      resolve("finished");
-    }, timeout);
-  });
-};
-
-// 赛跑:"谁跑的快，以谁为准执行回调"，result是第一个的返回结果
-Promise.race([openDoor(3000), putElephant(2000), closeDoor(10000)]).then(function (result) {
-  console.log("result: ", result);
-});
-
 let p1 = new Promise(function (resolve, reject) {
-  setTimeout(resolve, 500, "one");
+  setTimeout(resolve, 100, "one");
 });
 let p2 = new Promise(function (resolve, reject) {
-  setTimeout(reject, 100, "two");
+  setTimeout(reject, 200, "two");
+});
+let p3 = new Promise(function (resolve, reject) {
+  setTimeout(resolve, 300, "three");
+});
+let p4 = new Promise(function (resolve, reject) {
+  setTimeout(reject, 300, "four");
 });
 
-Promise.race([p1, p2]).then(
-  function (value) {
-    console.log("onResolve: ", value);
-  },
-  function (reason) {
-    console.log("onRejected: ", reason);
-  }
-);
+// 全fulfilled：onResolve，返回最快的fulfilled
+Promise.race([p1, p3])
+  .then(
+    (data) => {
+      console.log("demo1 onResovle: ", data);
+    },
+    (reason) => {
+      console.log("demo1 onRejectd: ", reason);
+    }
+  )
+  .catch((err) => {
+    console.log("demo1 catch: ", err);
+  });
+
+// fulfilled + rejected：返回最快的
+Promise.race([p3, p2, p4])
+  .then(
+    (data) => {
+      console.log("demo2 onResovle: ", data);
+    },
+    (reason) => {
+      console.log("demo2 onRejectd: ", reason);
+    }
+  )
+  .catch((err) => {
+    console.log("demo2 catch: ", err);
+  });
+
+// 全rejected：onRejected，返回最快的rejected
+Promise.race([p2, p4])
+  .then(
+    (data) => {
+      console.log("demo3 onResovle: ", data);
+    },
+    (reason) => {
+      console.log("demo3 onRejectd: ", reason);
+    }
+  )
+  .catch((err) => {
+    console.log("demo3 catch: ", err);
+  });
+
+/*************************************** 手写 ***************************************/
+Promise.myRace = function (taskList) {
+  if (!Array.isArray(taskList)) throw new Error("参数必须为数组");
+  return new Promise((resolve, reject) => {
+    taskList.forEach((task, index) => {
+      Promise.resolve(task).then(
+        (value) => {
+          resolve(value);
+        },
+        (reason) => {
+          reject(reason);
+        }
+      );
+    });
+  });
+};
+
+Promise.myRace([p1, p3])
+  .then(
+    (data) => {
+      console.log("myRace demo1 onResovle: ", data);
+    },
+    (reason) => {
+      console.log("myRace demo1 onRejectd: ", reason);
+    }
+  )
+  .catch((err) => {
+    console.log("myRace demo1 catch: ", err);
+  });
+
+Promise.myRace([p3, p2, p4])
+  .then(
+    (data) => {
+      console.log("myRace demo2 onResovle: ", data);
+    },
+    (reason) => {
+      console.log("myRace demo2 onRejectd: ", reason);
+    }
+  )
+  .catch((err) => {
+    console.log("myRace demo2 catch: ", err);
+  });
+
+Promise.myRace([p2, p4])
+  .then(
+    (data) => {
+      console.log("myRace demo3 onResovle: ", data);
+    },
+    (reason) => {
+      console.log("myRace demo3 onRejectd: ", reason);
+    }
+  )
+  .catch((err) => {
+    console.log("myRace demo3 catch: ", err);
+  });
